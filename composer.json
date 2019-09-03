@@ -3,6 +3,14 @@
     "description": "This package help you to call api of sms providers in iran with laravel framework",
     "type": "library",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohsen Mirhosseini",
+            "email": "mohsen.mirhosseini@gmail.com",
+            "homepage": "https://github.com/nishtman1366",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^7.0 | ^7.1 | ^7.2",
         "ext-soap": "*",
@@ -15,11 +23,5 @@
         },
         "files": []
     },
-    "authors": [
-        {
-            "name": "Mohsen Mirhosseini",
-            "email": "mohsen.mirhosseini@gmail.com"
-        }
-    ],
     "minimum-stability": "dev"
 }
