@@ -17,6 +17,39 @@ Run the Composer update command
 
     $ composer require nishtman/sms
 
+- First, enter the settings for your short message provider in the `config/sms.php` file and enter the module name you want in the `default` section.
+
 <a name="basic-usage"></a>
 ## Usage
-First, enter the settings for your short message provider in the Yi file and enter the module name you want in the default section.
+### Basic usage
+
+Sending sms
+```php
+public function send()
+{
+	/*
+	* Instance the sms object
+	*/
+	$sms = new \Nishtman\Sms\Sms();
+	$result = $sms->send('09123456789', 'text message');
+	/*
+	* or you can use facades
+	*/
+	$result = Nishtman\Sms\Facades\Sms::send('09123456789', 'text message');
+}
+```
+### Selecting provider
+```php
+public function send()
+{
+        /*
+         * Instance the sms object
+         */
+        $sms = new \Nishtman\Sms\Sms();
+        $result = $sms->provider('HostIran')->send('09123456789', 'text message')
+        /*
+         * or you can use facades
+         */
+        $result = Nishtman\Sms\Facades\Sms::provider('HostIran')->send('09123456789', 'text message');
+}
+```
