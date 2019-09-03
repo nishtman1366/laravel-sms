@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nishtman
- * Date: 9/3/19
- * Time: 8:45 AM
- */
 
 namespace Nishtman\Sms\Modules;
 
@@ -12,7 +6,6 @@ namespace Nishtman\Sms\Modules;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\Config;
 use GuzzleHttp\Client;
-use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 class SmsIr implements SmsInterface
 {
@@ -35,15 +28,14 @@ class SmsIr implements SmsInterface
         $this->client = $client;
         $data = [
             'json' => [
-                'UserApiKey' => Config::get('sms.providers.smsIr.apiKey'),
-                'SecretKey' => Config::get('sms.providers.smsIr.secretKey')
+                'UserApiKey' => Config::get('sms.providers.SmsIr.apiKey'),
+                'SecretKey' => Config::get('sms.providers.SmsIr.secretKey')
             ],
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ]
         ];
-        print('trying to get token' . PHP_EOL);
         try {
             $response = $client->post('api/Token', $data);
             $result = json_decode($response->getBody());
@@ -74,17 +66,55 @@ class SmsIr implements SmsInterface
             ]
         ];
         $result = $this->client->post('api/MessageSend', $data);
-        return json_decode($result->getBody());
+        $result = json_decode($result->getBody(), true);
+        $status = 0;
+        $r = [];
+        if ($result['IsSuccessful']) {
+            $status = 1;
+            foreach ($result['ids'] as $id) {
+                $r[] = $id['ID'];
+            }
+        }
+        $finalData = [
+            'status' => $status,
+            'message' => $result['Message'],
+            'referenceId' => implode(',', $r)
+        ];
+        return $finalData;
     }
 
     public function delivery(int $referenceId): array
     {
-        // TODO: Implement delivery() method.
+        $data = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+                'x-sms-ir-secure-token' => $this->token,
+            ]
+        ];
+        $result = $this->client->get('api/MessageSend?id=' . $referenceId, $data);
+        $result = json_decode($result->getBody(), true);
+        if ($result['IsSuccessful']) {
+            return [$result['Messages']['DeliveryStatus']];
+        }
+        return [0];
     }
 
     public function getCredits(): int
     {
-        // TODO: Implement getCredits() method.
+        $data = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+                'x-sms-ir-secure-token' => $this->token,
+            ]
+        ];
+        $result = $this->client->get('api/credit', $data);
+        $result = json_decode($result->getBody(), true);
+        if ($result['IsSuccessful']) {
+            return $result['Credit'];
+        }
+        return 0;
     }
 
     public function message(int $status): string

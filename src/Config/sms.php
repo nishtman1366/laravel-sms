@@ -4,22 +4,22 @@ return [
 
     'providers' => [
         'hostIran' => [
-            'username' => 'host',
-            'password' => 'iran',
-            'number' => '987654321'
+            'username' => '****',
+            'password' => '****',
+            'number' => '****'
         ],
 
         'MeliPayamak' => [
-            'username' => 'meli',
-            'password' => 'payamak',
-            'number' => '123456789'
+            'username' => '****',
+            'password' => '****',
+            'number' => '****'
         ],
 
 
         'SmsIr' => [
-            'apiKey' => '124142',
-            'secretKey' => '421141',
-            'lineNumber' => '421141',
+            'apiKey' => '****',
+            'secretKey' => '****',
+            'lineNumber' => '****',
         ]
     ]
 ];
