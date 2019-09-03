@@ -2,9 +2,18 @@
     "name": "nishtman/sms",
     "description": "This package help you to call api of sms providers in iran with laravel framework",
     "type": "library",
+    "license": "MIT",
     "require": {
+        "php": "^7.0 | ^7.1 | ^7.2",
         "ext-soap": "*",
         "guzzlehttp/guzzle": "*"
+    },
+    "keywords": ["Laravel","sms","sms providers","nishtman"],
+    "autoload": {
+        "psr-4": {
+            "Nishtman\\Sms\\" : "src"
+        },
+        "files": []
     },
     "authors": [
         {
