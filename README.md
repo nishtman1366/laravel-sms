@@ -21,9 +21,8 @@ Run the Composer update command
 
 <a name="basic-usage"></a>
 ## Usage
-### Basic usage
 
-Sending sms
+#### Sending sms
 ```php
 public function send()
 {
@@ -38,7 +37,7 @@ public function send()
 	$result = Nishtman\Sms\Facades\Sms::send('09123456789', 'text message');
 }
 ```
-### Selecting provider
+#### Selecting provider
 ```php
 public function send()
 {
@@ -52,4 +51,30 @@ public function send()
          */
         $result = Nishtman\Sms\Facades\Sms::provider('HostIran')->send('09123456789', 'text message');
 }
+```
+
+## Methods and api
+
+```php
+/*
+* Set the provider
+*/
+provider(string $provider): \Nishtman\Sms\sms
+```
+
+```php
+/*
+* Set the provider
+*/
+send(string $to, string $text): array
+
+/*
+* Array
+* (
+*     [status] => 'integer status code'
+*     [message] => 'string message'
+*     [referenceId] => 'integer reference id to get the delivery report'
+* )
+*/
+
 ```
