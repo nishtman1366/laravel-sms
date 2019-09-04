@@ -1,4 +1,4 @@
-nishtman/sms
+nishtman/laravel-sms
 ======
 This library helps developers to easily call the web services of sms providers in Iran using the Larval Framework.
 
@@ -64,7 +64,7 @@ provider(string $provider): \Nishtman\Sms\sms
 
 ```php
 /*
-* Set the provider
+* Set sms message
 */
 send(string $to, string $text): array
 
@@ -78,3 +78,39 @@ send(string $to, string $text): array
 */
 
 ```
+
+```php
+/*
+* Get the delivery status
+*/
+delivery(int $referenceId): array
+
+/*
+* Array
+* (
+*     [string] => 'string status text'
+* )
+*/
+
+```
+
+```php
+/*
+* Get the credits value
+*/
+getCredits(int $referenceId): int
+
+/*
+* Array
+* (
+*     [int] => 'your credit amount'
+* )
+*/
+
+```
+
+## Test
+
+## Pull requests
+
+## License
