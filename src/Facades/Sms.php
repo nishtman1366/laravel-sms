@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Nishtman\Sms\Sms provider(string $provider = null)
  * @method static \Nishtman\Sms\Sms set(string $key, $value)
  * @method static mixed get(string $key)
+ * @method static mixed send(string $to, string $body)
  * @method static array delivery(int $referenceId)
  * @method static int getCredits()
  */

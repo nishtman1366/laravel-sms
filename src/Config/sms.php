@@ -20,6 +20,11 @@ return [
             'apiKey' => '****',
             'secretKey' => '****',
             'lineNumber' => '****',
+        ],
+
+        'Ghasedak' => [
+            'apiKey' => '*******',
+            'lineNumber' => '*******',
         ]
     ]
 ];

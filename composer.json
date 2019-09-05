@@ -1,5 +1,5 @@
 {
-    "name": "nishtman/sms",
+    "name": "nishtman/laravel-sms",
     "description": "This package help you to call api of sms providers in iran with laravel framework",
     "type": "library",
     "license": "MIT",
