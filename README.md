@@ -5,8 +5,9 @@ This library helps developers to easily call the web services of sms providers i
 ## Supported providers
 - [MeliPayamak](http://melipayamak.ir "MeliPayamak")
 - [HostIranSms](http://sms.hostiran.ir "HostIranSms")
-- [sms.ir](http://sms.ir "sms.ir")
-- [ghasedak.io](http://ghasedak.io "ghasedak.io")
+- [SmsIr](http://sms.ir "sms.ir")
+- [Ghasedak](http://ghasedak.io "ghasedak.io")
+- [Kavenegar](http://kavenegar.com "kavenegar.com")
 
 ## Installation
 
