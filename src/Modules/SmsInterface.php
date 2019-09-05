@@ -11,7 +11,7 @@ namespace Nishtman\Sms\Modules;
 
 interface SmsInterface
 {
-    public function send(string $to, string $text, bool $isFlash): array;
+    public function send(array $to, array $text, bool $isFlash): array;
 
     public function delivery(int $referenceId): array;
 

@@ -23,14 +23,14 @@ class MeliPayamak implements SmsInterface
     }
 
 
-    public function send(string $to, string $text, bool $isFlash = false): array
+    public function send(array $to, array $text, bool $isFlash = false): array
     {
         $data = [
             'username' => $this->username,
             'password' => $this->password,
-            'to' => $to,
+            'to' => $to[0],
             'from' => $this->number,
-            'text' => $text,
+            'text' => $text[0],
             'isflash' => $isFlash,
         ];
 

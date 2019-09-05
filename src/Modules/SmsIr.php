@@ -49,12 +49,12 @@ class SmsIr implements SmsInterface
     }
 
 
-    public function send(string $to, string $text, bool $isFlash = false): array
+    public function send(array $to, array $text, bool $isFlash = false): array
     {
         $data = [
             'json' => [
-                'Messages' => explode(',', $text),
-                'MobileNumbers' => explode(',', $to),
+                'Messages' => $text,
+                'MobileNumbers' => $to,
                 'LineNumber' => Config::get('sms.providers.smsIr.lineNumber'),
                 'SendDateTime' => null,
                 'CanContinueInCaseOfError' => false

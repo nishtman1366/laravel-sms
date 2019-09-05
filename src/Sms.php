@@ -58,7 +58,7 @@ class Sms
         return null;
     }
 
-    public function send(string $to, string $text)
+    public function send(string $to, string $text): array
     {
         $className = 'Nishtman\\Sms\\Modules\\' . $this->provider;
         $module = new $className;
